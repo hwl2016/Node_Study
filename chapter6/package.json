@@ -1,0 +1,14 @@
+{
+  "name": "chapter6",
+  "version": "1.0.0",
+  "description": "Node.js实战第六章",
+  "main": "index.js",
+  "scripts": {
+    "test": "supervisor index.js"
+  },
+  "author": "Huwl",
+  "license": "ISC",
+  "dependencies": {
+    "connect": "^3.6.2"
+  }
+}
