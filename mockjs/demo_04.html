@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mock</title>
+</head>
+<body>
+    <h4>Mock.js study</h4>
+    
+<script src="jquery-1.7.2.min.js"></script>
+<script src="mock/mock-min.js"></script>
+<script>
+    Mock.mock(/\.json/, 'get', function(options) {
+	    return options
+	})
+	Mock.mock(/\.json/, 'post', function(options) {
+	    return options.type
+	})
+
+	$.ajax({
+	    url: 'hello.json?t=' + (+ new Date()),
+	    type: 'get',
+	    dataType: 'json'
+	}).done(function (data, status, jqXHR) {
+	    $('<pre>').text(JSON.stringify(data, null, 4))
+	        .appendTo('body')
+	})
+
+	$.ajax({
+	    url: 'hello.json',
+	    type: 'post',
+	    dataType: 'json'
+	}).done(function (data, status, jqXHR) {
+	    $('<pre>').text(JSON.stringify(data, null, 4))
+	        .appendTo('body')
+	})
+</script>
+</body>
+</html>
+
+
+
+
+
+
+	
