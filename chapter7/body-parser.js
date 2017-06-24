@@ -68,11 +68,11 @@ app
 	// .use(methodOverride('X-HTTP-Method-Override'))
 	.use(methodOverride(function(req, res) {	//要放在bodyParser和multipart的下面
 
-		if(req.headers && typeof req.headers === 'object' && 'x-http-method-override' in req.headers) {
-			console.log('X-HTTP-Method-Override');
-			var method = req.headers['x-http-method-override'];
-			return method;
-		}
+		// if(req.headers && typeof req.headers === 'object' && 'x-http-method-override' in req.headers) {
+		// 	console.log('X-HTTP-Method-Override');
+		// 	var method = req.headers['x-http-method-override'];
+		// 	return method;
+		// }
 
 		if (req.body && typeof req.body === 'object' && '_method' in req.body) {
 		    var method = req.body._method
