@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+	<h4>Photo</h4>
+	<form action="/photo/upload" method="post" enctype="multipart/form-data">
+		<div class="box"><input type="text" name="name"></div>
+		<div class="box"><input type="file" name="pic"></div>
+		<div class="box"><input type="submit" value="submit"></div>
+	</form>
+</body>
+</html>

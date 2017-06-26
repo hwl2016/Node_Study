@@ -2,10 +2,35 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel='stylesheet' href='/bootstrap/css/bootstrap.min.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <div>
+    	<a href="/photo">photo</a>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>PATH</th>
+          <th>OPT</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% photoList.forEach(function(item, i) { %>
+        <tr>
+          <td><%=item.name%></td>
+          <td><a href="<%=item.path%>" target="_blank"><%=item.path%></a></td>
+          <td>
+            <a href="/photo/<%=item._id%>/download">下载</a>
+            <a href="/photo/<%=item._id%>/edit">修改</a>
+            <a href="/photo/<%=item._id%>/delete">删除</a>
+          </td>
+        </tr>
+      <% }) %>
+      </tbody>
+    </ul>
   </body>
 </html>
