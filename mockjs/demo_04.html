@@ -10,6 +10,19 @@
 <script src="jquery-1.7.2.min.js"></script>
 <script src="mock/mock-min.js"></script>
 <script>
+	var Random = Mock.Random;
+
+	//扩展
+	Random.extend({
+	    constellation: function(date) {
+	        var constellations = ['白羊座', '金牛座', '双子座', '巨蟹座', '狮子座', '处女座', '天秤座', '天蝎座', '射手座', '摩羯座', '水瓶座', '双鱼座']
+	        return this.pick(constellations)
+	    }
+	});
+	Random.constellation();
+
+
+
     Mock.mock(/\.json/, 'get', function(options) {
 	    return options
 	})
@@ -17,22 +30,51 @@
 	    return options.type
 	})
 
-	$.ajax({
-	    url: 'hello.json?t=' + (+ new Date()),
-	    type: 'get',
-	    dataType: 'json'
-	}).done(function (data, status, jqXHR) {
-	    $('<pre>').text(JSON.stringify(data, null, 4))
-	        .appendTo('body')
+	Mock.mock('/user/list', 'post', {
+	    code: 200,
+	    'list|6': [
+	    	{
+	    		'id|+1': 1,
+	    		'type|1': ['AMD', 'CMD', 'KMD', 'UMD'],
+	    		'status|1': true,
+	    		'email': '@email',
+	    		'name': '@name',
+	    		'cfirst': '@cfirst',
+	    		'domain': '@domain',
+	    		'word': '@word',
+	    		'natural': '@natural',
+	    		'datetime': '@datetime',
+	    		'data': Random.date('yyyy-MM-dd'),
+	    		'image': Random.image('200x200', '#ffcc33', '#FFF', 'png', 'Xunbao'),
+	    		'now': '@now',
+	    		'constellation': '@constellation',
+	    	}
+	    ]
 	})
 
+	// $.ajax({
+	//     url: 'hello.json?t=' + (+ new Date()),
+	//     type: 'get',
+	//     dataType: 'json'
+	// }).done(function (data, status, jqXHR) {
+	//     $('<pre>').text(JSON.stringify(data, null, 4))
+	//         .appendTo('body')
+	// })
+
 	$.ajax({
-	    url: 'hello.json',
+	    url: '/user/list',
 	    type: 'post',
 	    dataType: 'json'
 	}).done(function (data, status, jqXHR) {
-	    $('<pre>').text(JSON.stringify(data, null, 4))
+		$('<pre>').text(JSON.stringify(data, null, 4))
 	        .appendTo('body')
+
+	        // var res = JSON.parse(data);
+
+	        for(var i = 0; i < data.list.length; i++) {
+	        	$('<img src="' + data.list[i].image + '" style="margin: 5px;"/>').appendTo('body')
+	        }
+	    console.log(data);
 	})
 </script>
 </body>
