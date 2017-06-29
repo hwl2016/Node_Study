@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="pop_con borders_bottom_none">
+    <div class="common_edit_frame">
+        <div class="common_edit_content borders_bottom_none">
+            <div class="common_edit_list">
+                <div class="common_edit_txt">角色分类</div>
+                <div class="common_edit_select">
+                    <select class='js_sele_user_temp1'></select>
+                    <div class="common_edit_write js_sele_user_temp_project">租户</div>
+                </div>
+            </div>
+            <div class="common_edit_list js_second_sele_project">
+                <div class="common_edit_txt">项目选择</div>
+                <div class="common_edit_select">
+                    <select class='js_sele_user_temp2'></select>
+                    <div class="common_edit_write js_sele_user_temp_project2">请点击选择您的项目</div>
+                </div>
+            </div>
+        </div>
+        <div class="pop_morepop pop_morepop_change">
+            <p>分配角色<span class='js_checkbox_span'>(可多选)</span></p>
+            <table>
+                <tbody>
+                <tr class='js_checkbox_user hide'>
+                    <td>
+                        <input type="checkbox" id="pop11" data-key='租户管理员' data-id='2'/>
+                        <label for="pop11">租户管理员</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="pop12" data-key='普通用户' data-id='7'/>
+                        <label for="pop12">普通用户</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="pop13" data-key='领导' data-id='8'/>
+                        <label for="pop13">领导</label>
+                    </td>
+                </tr>
+                <tr class='js_checkbox_project hide'>
+                    <td>
+                        <input type="radio" id="pop11" data-key='项目管理员' name='radios' data-id='3'/>
+                        <label for="pop11">项目管理员</label>
+                    </td>
+                    <td>
+                        <input type="radio" id="pop12" data-key='开发人员' name='radios' data-id='4'/>
+                        <label for="pop12">开发人员</label>
+                    </td>
+                    <td>
+                        <input type="radio" id="pop13" data-key='测试人员' name='radios' data-id='5'/>
+                        <label for="pop13">测试人员</label>
+                    </td>
+                    <td>
+                        <input type="radio" id="pop14" data-key='运营维护人员' name='radios' data-id='6'/>
+                        <label for="pop14">项目配置员</label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pop_rejectBtn">
+            <a href="javascript:;" class="relego js_click_update" >完成</a>
+            <a href="javascript:;" class="cancel">取消</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/template" id="user_all_unlock">
+    <div class="pop_con">
+        <div class="pop_reall">
+            <div class="pop_removePeople">
+                <p>确认解锁该用户吗？</p>
+            </div>
+        </div>
+    </div>
+    <div class="pop_rejectBtn">
+        <a href="javascript:;" class="relego relegoagent">确定</a>
+        <a href="javascript:;" class="cancel">取消</a>
+    </div>
+</script>
+<script type="text/template" id="user_all_b">
+    <div class="pop_con">
+        <div class="pop_reall">
+            <div class="pop_removePeople">
+                <p>确定删除角色 XXX 吗？</p>
+            </div>
+        </div>
+    </div>
+    <div class="pop_releaseBtn">
+        <a href="javascript:;" class="relego">确定</a>
+        <a href="javascript:;" class="cancel">取消</a>
+    </div>
+</script>
+</body>
+</html>

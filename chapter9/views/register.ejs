@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  	<meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <title><%= title %></title>
-    <%include ./common/css.ejs%>
-  </head>
-  <body>
+    <% include ./common/css.ejs %>
+</head>
+<body>
     <h4>register</h4>
     <form action="/users/register" method="post">
-      <p><input type="text" name="username" placeholder="username"></p>
-      <p><input type="password" name="userpass" placeholder="password"></p>
-      <p><input type="password" name="useragin" placeholder="password again"></p>
-      <p><input type="submit" value="提交"></p>
+        <p><input type="text" name="username" placeholder="username"></p>
+        <p><input type="password" name="userpass" placeholder="password"></p>
+        <p><input type="password" name="useragin" placeholder="password again"></p>
+        <p><input type="submit" value="提交"></p>
     </form>
-    
-    <%include ./common/script.ejs%>
-  </body>
+
+<% include ./common/script.ejs %>
+</body>
 </html>
