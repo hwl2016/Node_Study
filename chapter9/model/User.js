@@ -70,7 +70,7 @@ User.get = function (id, cb) {
 User.auth = function (name, pass, cb) {
     User.getByName(name, (err, user) => {
         if (err) return cb(err);
-        if (!user.id) return cb();	//用户不存在
+        if (!user.id) return cb('用户不存在...', null);	//用户不存在
 
         //对给出的密码做hash处理
         bcrypt.hash(pass, user.salt, null, (err, hash) => {
@@ -78,7 +78,7 @@ User.auth = function (name, pass, cb) {
             if (hash == user.pass) {
                 return cb(null, user);
             }
-            cb();	//密码无效
+            cb('用户名或密码错误', null);	//密码无效
         })
     })
 }

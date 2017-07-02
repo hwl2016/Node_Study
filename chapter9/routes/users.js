@@ -14,7 +14,7 @@ router.post('/login', function(req, res, next) {
         if(err) {
             res.send(err)
         }else {
-            res.send('login sucess')
+            res.send('login sucess...')
         }
     })
 });

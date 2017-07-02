@@ -7,6 +7,12 @@
 </head>
 <body>
     <h4>register</h4>
+    <% if (locals.messages) { %>
+        <% messages.forEach(function(message) { %>
+            <p class="<%=message.type%>"><%= message.string %></p>
+        <% }) %>
+        <% removeMessages() %>
+    <% } %>
     <form action="/users/register" method="post">
         <p><input type="text" name="username" placeholder="username"></p>
         <p><input type="password" name="userpass" placeholder="password"></p>
