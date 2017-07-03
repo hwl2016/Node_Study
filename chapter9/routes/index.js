@@ -11,7 +11,19 @@ router.get('/page/login', function(req, res, next) {
 });
 
 router.get('/page/register', function(req, res, next) {
-  res.render('register');
+    res.render('register');
+});
+
+router.get('/logout', function(req, res, next) {
+    // req.session.destroy(function(err) {
+    //     if(err) throw err;
+    //     res.redirect('/');
+    // })
+
+    // console.log(req.session)
+    req.session.uid = null; //使用这种方法来销毁session
+    res.redirect('/');
+    // console.log(req.session)
 });
 
 module.exports = router;

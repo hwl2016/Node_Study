@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var session = require('cookie-session');
 var bodyParser = require('body-parser');
 var messages = require('./model/messages');
+var middlewareUser = require('./middleware/user');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -17,15 +18,25 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.locals.title = "Huwl";
 
+var arr = [];
+for(var i = 0; i < 10000; i++) {
+    arr.push('key_' + Math.random());
+}
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(session());
-app.use(messages);
+app.use(session({
+    name: 'session_id',
+    keys: arr,
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(middlewareUser);
+app.use(messages);
 
 app.use('/', index);
 app.use('/users', users);

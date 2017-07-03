@@ -7,8 +7,19 @@
 </head>
 <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="/users">User</a>
+    <% if(locals.user) { %>
+        <div id="menu">
+            <span>欢饮您，<%=user.name%></span>
+            <a href="/post">post</a>
+            <a href="/logout">logout</a>
+        </div>
+    <% } else { %>
+        <div id="menu">
+            <a href="/page/login">登录</a>
+            <a href="/page/register">注册</a>
+        </div>
+    <% } %>
+    <!--<a href="/users">User</a>-->
 
 <% include ./common/script.ejs %>
 </body>

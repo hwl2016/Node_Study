@@ -88,7 +88,7 @@ User.auth = function (name, pass, cb) {
 // 	pass: '123456',
 // 	age: 20
 // })
-
+//
 // tobi.save((err) => {
 // 	if(err) throw err;
 // 	console.log('user id %d', tobi.id);
