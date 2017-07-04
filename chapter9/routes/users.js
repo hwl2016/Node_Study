@@ -7,6 +7,14 @@ router.get('/', function (req, res, next) {
     res.render('users');
 });
 
+router.get('/info', function (req, res, next) {
+    res.json({
+        name: 'Micahel',
+        age: 18,
+        job: "teacher"
+    });
+});
+
 router.post('/login', function (req, res, next) {
     var name = req.body.username;
     var pass = req.body.password;

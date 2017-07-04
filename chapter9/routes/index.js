@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var testController=require('./testController');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -25,5 +27,28 @@ router.get('/logout', function(req, res, next) {
     res.redirect('/');
     // console.log(req.session)
 });
+
+router.post('/upload', function(req, res, next) {
+    res.json({
+        haha: '123'
+    })
+})
+
+function upload(oldPath, newPath, cb) {
+    fs.readFile( oldPath, function (err, data) {
+        if(err) {
+            console.log(err);
+            return
+        }
+        fs.writeFile(newPath, data, function (err) {
+            if(err) {
+                console.log(err);
+                return
+            }
+            console.log( 'File uploaded successfully' );
+            cb(err);
+        });
+    });
+}
 
 module.exports = router;
