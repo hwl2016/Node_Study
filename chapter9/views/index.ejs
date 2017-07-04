@@ -21,32 +21,45 @@
     <% } %>
     <!--<a href="/users">User</a>-->
     <form id="uploadForm">
-        <input type="file" id="aaa" name="pic">
+        <p><input type="text" id="username" name="username"></p>
+        <p><input type="password" id="pass" name="pass"></p>
+        <p><input type="file" id="aaa" name="avatar"></p>
+        <p><button type="button" id="submit">提交</button></p>
     </form>
+    <div id="btn">click</div>
 <% include ./common/script.ejs %>
     <script>
-        $('#file').change(function() {
-//            var formData = new FormData($( "#file" )[0]);
-//            var file = $( "#aaa" )[0].files[0];
-//            var data = new FormData();
-//            data.append('pic', file);
+        $('#submit').click(function() {
+            var data = new FormData();
+            var username = $('#username').val();
+            var pass = $('#pass').val();
+            var file = $( "#aaa" )[0].files[0];
+            data.append('username', username);
+            data.append('pass', pass);
+            data.append('avatar', file);
             $.ajax({
                 url: '/upload',
                 type: 'POST',
-                data: {a: 'haha'},
+                data: data,
+                // 告诉jQuery不要去处理发送的数据
+                processData : false,
+                // 告诉jQuery不要去设置Content-Type请求头
+                contentType : false,
                 success: function (data) {
                     console.log(data);
                 }
             })
         })
 
-        $.ajax({
-            url: '/upload',
-            type: 'POST',
-            data: {a: 'haha'},
-            success: function (data) {
-                console.log(data);
-            }
+
+        $('#btn').click(function() {
+            $.ajax({
+                url: '/test',
+                type: 'post',
+                success: function(data) {
+                    console.log(data);
+                }
+            })
         })
 
     </script>

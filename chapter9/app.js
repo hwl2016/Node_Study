@@ -7,7 +7,6 @@ var session = require('cookie-session');
 var bodyParser = require('body-parser');
 var messages = require('./model/messages');
 var middlewareUser = require('./middleware/user');
-var multer = require('multer');
 
 var index = require('./routes/index');
 var users = require('./routes/users');

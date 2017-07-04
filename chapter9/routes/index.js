@@ -1,7 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var testController=require('./testController');
+var multer = require('multer');
 
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/uploads')    //设置上传后文件路径，uploads文件夹会自动创建。
+    },
+    filename: function (req, file, cb) {
+        var fileFormat = (file.originalname).split(".");    //获取文件的扩展名
+        cb(null, file.fieldname + '-' + Date.now() + "." + fileFormat[fileFormat.length - 1])
+    }
+})
+
+var upload = multer({ storage: storage })
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -28,27 +39,20 @@ router.get('/logout', function(req, res, next) {
     // console.log(req.session)
 });
 
-router.post('/upload', function(req, res, next) {
+router.post('/upload', upload.single('avatar'), function(req, res, next) {
+    var userName = req.body.username;
+    var pass = req.body.pass;
     res.json({
-        haha: '123'
+        code: 200,
+        msg: 'success'
     })
 })
 
-function upload(oldPath, newPath, cb) {
-    fs.readFile( oldPath, function (err, data) {
-        if(err) {
-            console.log(err);
-            return
-        }
-        fs.writeFile(newPath, data, function (err) {
-            if(err) {
-                console.log(err);
-                return
-            }
-            console.log( 'File uploaded successfully' );
-            cb(err);
-        });
-    });
-}
+router.post('/test', function(req, res, next) {
+    res.json({
+        code: 200,
+        msg: 'test'
+    })
+})
 
 module.exports = router;
