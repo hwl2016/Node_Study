@@ -10,6 +10,7 @@ var middlewareUser = require('./middleware/user');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var entry = require('./routes/entry');
 
 var app = express();
 
@@ -39,10 +40,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(middlewareUser);
 app.use(messages);
 
-
-
 app.use('/', index);
 app.use('/users', users);
+app.use('/entry', entry);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

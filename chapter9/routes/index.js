@@ -40,11 +40,25 @@ router.get('/logout', function(req, res, next) {
 });
 
 router.post('/upload', upload.single('avatar'), function(req, res, next) {
-    var userName = req.body.username;
-    var pass = req.body.pass;
+    var base64 = req.body.base64;
+    var act = req.body.act;
+    var name = req.body.name;
+    var type = req.body.type;
+    var length = req.body.length;
+    res.set({
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+        'Access-Control-Max-Age': '3600',
+        'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With, Cookie'
+        // 'Access-Control-Allow-Headers': '*'
+    })
     res.json({
-        code: 200,
-        msg: 'success'
+        r: 200,
+        msg: 'success',
+        data: {
+            // imgUrl: 'http://192.168.1.137:3000/uploads/' + req.file.filename,
+            imgBase64: base64
+        }
     })
 })
 

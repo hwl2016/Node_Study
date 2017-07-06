@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <% include ./common/css.ejs %>
+</head>
+<body>
+    <h1><%=title%></h1>
+    <form action="/entry/post" method="post">
+        <p><input type="text" name="title" placeholder="Title"></p>
+        <p>
+            <textarea name="body" id="" cols="30" rows="10" placeholder="Body"></textarea>
+        </p>
+        <p><input type="submit" value="POST"></p>
+    </form>
+
+<% include ./common/script.ejs %>
+    <script>
+
+
+    </script>
+</body>
+</html>
